@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Radius</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F3F3E0;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 70px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #4ddd56;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #117554;
+        }
+    </style>
+</head>
+<body>
+    
+    <form id="radiusForm" action="process.html" method="get" onsubmit="return validateForm()">
+        <label for="radius">Nhập bán kính đường tròn:</label>
+        <input type="text" id="radius" name="radius">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const radius = document.getElementById("radius").value;
+            if (isNaN(radius) || radius <= 0) {
+                alert("Vui lòng nhập một số dương.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

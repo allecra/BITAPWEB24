@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Radius</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F3F3E0;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        #resultContainer {
+            background-color: #ffffff;
+            padding: 70px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        #resultLabel {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            display: block;
+            color: #4ddd56;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #117554;
+        }
+    </style>
+</head>
+<body>
+    <div id="resultContainer">
+        <h1>Kết quả tính toán</h1>
+        <label id="resultLabel">Bạn muốn kết quả nào: </label>
+        <button onclick="calculateCircumference()">Tính chu vi</button>
+        <button onclick="calculateArea()">Tính diện tích</button>
+    </div>
+
+    <script>
+        function getRadius() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseFloat(urlParams.get("radius"));
+        }
+
+        function calculateCircumference() {
+            const radius = getRadius();
+            if (!isNaN(radius)) {
+                const circumference = 2 * Math.PI * radius;
+                document.getElementById("resultLabel").innerText = "Chu vi: " + circumference.toFixed(2);
+            } else {
+                alert("Bán kính không hợp lệ.");
+            }
+        }
+
+        function calculateArea() {
+            const radius = getRadius();
+            if (!isNaN(radius)) {
+                const area = Math.PI * Math.pow(radius, 2);
+                document.getElementById("resultLabel").innerText = "Diện tích: " + area.toFixed(2);
+            } else {
+                alert("Bán kính không hợp lệ.");
+            }
+        }
+    </script>
+</body>
+</html>
